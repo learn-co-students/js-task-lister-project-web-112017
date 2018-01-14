@@ -2,12 +2,24 @@
 list is responsible for creating a single list component
 */
 const List = (() => {
-  let id = 1
+  let ListId = 1
   return class List {
     constructor(title) {
-      //your code here
-      // NOTE: How can we use the private id variable to auto increment list ids🤔?
+       this.id = ListId++
+       this.title = title
+       store.lists.push(this)
+
     }
+
+  tasks(){
+    return store.tasks.filter(task => task.listId === this.id)
+  }
+
+  static findByTitle(title){
+    return store.lists.find(list => list.title === title)
+  }
+
+
   }
 
 })()
