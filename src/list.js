@@ -7,9 +7,13 @@ const List = (() => {
     constructor(title) {
       this.id = id++;
       this.title = title;
-      this.tasks = [];
+      this.tasks = {};
       //your code here
       // NOTE: How can we use the private id variable to auto increment list ids🤔?
+    }
+
+    addTask(task){
+      this.tasks[task.id] = task
     }
   }
 
