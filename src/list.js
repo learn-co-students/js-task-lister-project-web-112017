@@ -35,49 +35,65 @@ function handleNewListForm(event) {
   const newListDiv = document.createElement("div")
   newListDiv.className = "list"
 
-// add title
+  // add title
   const newListTitle = document.createElement("h2")
   newListTitle.innerText = listTitle
   newListDiv.appendChild(newListTitle)
-// end title
+  // end title
 
-// add <ul> tags
-const ulTags = document.createElement("ul")
-newListDiv.appendChild(ulTags)
-// end <ul> tags
+  // add <ul> tags
+  const ulTags = document.createElement("ul")
+  newListDiv.appendChild(ulTags)
+  // end <ul> tags
 
-// create delete button
-const xButton = document.createElement("button")
-xButton.className = "delete-list"
-newListDiv.appendChild(xButton)
-xButton.innerText = "x"
-// end delete button
 
-document.querySelector("#lists").appendChild(newListDiv)
+  document.querySelector("#lists").appendChild(newListDiv)
 
   let newInstance = new List(listTitle)
   newListDiv.id = `list-${newInstance.id}`
   newListInput.value = ""
-// end creating task list
+  // end creating task list
+
+  // create delete button
+  const xButton = document.createElement("button")
+  xButton.className = "delete-list"
+  newListDiv.appendChild(xButton)
+  xButton.innerText = "x"
+  xButton.dataset.id = newInstance.id
+  xButton.addEventListener("click", function() {
+    const buttonId = xButton.dataset.id
+    const appList = document.querySelector(`div#list-${buttonId}`)
+    const listSection = document.querySelector('#lists')
+    listSection.removeChild(appList)
+  })
+  // end delete button
 
 
-// send to create-task-object
+  // send to create-task-object
   const taskForm = document.querySelector("#parent-list")
   const newListOption = document.createElement("option")
   newListOption.innerText = listTitle
   newListOption.value = newListDiv.id
   taskForm.add(newListOption)
-// end create-new-task-option
-
-
-
-// add delete list button option
-
-
+  // end create-new-task-option
 
 }
 
-// create handler for deleting list
+
+newListForm.addEventListener("submit", handleNewListForm)
 
 
- newListForm.addEventListener("submit", handleNewListForm)
+
+
+// delete button functionality (to be called in newListForm)
+// function handleDeleteList(button) {
+//   button.preventDefault()
+//
+//   const buttonId = button.dataset.id
+//   const appList = document.querySelector(`div#list-${buttonId}`)
+//   const listSection = document.querySelector('#lists')
+//
+//   listSection.removeChild(appList)
+// }
+
+//end delete button

@@ -41,7 +41,7 @@ function handleNewTask(event) {
   console.log(`div.list#${newTaskParent.value}`)
   console.log(document.querySelector(`div.list#${newTaskParent.value}`))
   console.log(taskItem)
-  taskItem.innerHTML= `Task: ${taskDescrip}` + `${"\n"}` + `Priority: ${taskPriority}`
+  taskItem.innerHTML= `Task: ${taskDescrip}` + "<br>" + `Priority: ${taskPriority}`
   console.log(newTaskDescrip)
 
   newTaskDescrip.value = ""
