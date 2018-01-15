@@ -5,7 +5,7 @@ const List = (() => {
   let id = 1
   return class List {
     constructor(title) {
-      this.id = ++id;
+      this.id = id++;
       this.title = title;
       this.tasks = [];
       //your code here
