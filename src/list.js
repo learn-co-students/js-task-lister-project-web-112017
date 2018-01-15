@@ -21,6 +21,7 @@ const List = (() => {
 
     let listView = document.getElementById('lists')
     let dropDown = document.getElementById('parent-list')
+
     //list container
 
     let newListTitle = document.getElementById('new-list-title').value
@@ -30,6 +31,15 @@ const List = (() => {
     newListDeleteButton.innerText = 'X'
     newListDeleteButton.className = 'delete-list'
     newListDeleteButton.setAttribute('data-id', this.id)
+    newListDeleteButton.addEventListener("click", function(e) {
+      for (let i=0; i<dropDown.length;  i++) {
+        if (dropDown[i].getAttribute('data-id') === e.target.getAttribute('data-id')){
+          console.log(dropDown[i])
+          dropDown[i].remove()
+        }
+      }
+      e.target.parentElement.parentElement.remove()
+    })
 
     let newListTasks = document.createElement('ul')
     newListTasks.setAttribute('data-id', this.id)

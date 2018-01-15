@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let taskForm = document.getElementById('create-task-form')
   taskForm.style.display = 'none'
   let listForm = document.getElementById('create-list-form')
-  let allLists = document.getElementById("lists")
 
 //EVENT LISTENERS
   listForm.addEventListener('submit', function(e) {
@@ -35,15 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     newTask.makeTask()
 
     taskForm.reset()
+
   })
-
-  // allLists.addEventListener("click", function(event) {
-  //   let deleteButton = event.target
-  //   deleteButton.parentElement.remove()
-  // })
-
-
-
 
 
 });

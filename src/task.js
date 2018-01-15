@@ -24,15 +24,25 @@ const Task = (() => {
     makeTask() {
       let newTaskDescription = document.getElementById('new-task-description').value
       let newTaskPriority = document.getElementById('new-task-priority').value
-      let parentListInput = document.getElementById('parent-list').value
+
 
       let newLi = document.createElement('li')
       newLi.innerHTML = `Task: ${this.description} <br> Priority: ${this.priority}`
       newLi.setAttribute('data-id', this.id)
 
-      const items = [...document.querySelector("#parent-list").children]
+      let selectedIndex = document.getElementById('parent-list').options.selectedIndex
 
-      parentListInput.append(newLi)
+      var allLists = [].slice.call(document.getElementById("lists").children);
+
+      let parentId = "";
+
+      for (let i = 0; i < allLists.length; i++) {
+        if (allLists[i].id-1 === selectedIndex) {
+          parentId = allLists[i].id
+        } 
+      }
+
+      document.getElementById(parentId).append(newLi)
     }
   }
 
